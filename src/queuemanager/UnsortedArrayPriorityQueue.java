@@ -10,7 +10,7 @@ package queuemanager;
  * @author sudhi
  * @param <T>
  */
-public  class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
+public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
     
     /**
      * Where the data is actually stored.
@@ -28,6 +28,7 @@ public  class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
      * This is equal to the item count minus one.
      */
     private int tailIndex;
+    private int priority;
 
     /**
      * Create a new empty queue of the given size.
@@ -67,10 +68,33 @@ public  class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         return tailIndex < 0;
     }
 
-    @Override
+   
     public void remove() throws QueueUnderflowException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     if (isEmpty())  {throw new UnsupportedOperationException("Not supported yet.");} //To change body of generated methods, choose Tools | Templates.
+     else{
+     int i = tailIndex;
+            while (i > 0 && ((PriorityItem<T>) storage1[i - 1]).getPriority() < priority) {
+                storage1[i] = storage1[i - 1];
+                i = i - 1;
+            }
+            //storage1[i] = new PriorityItem<>(item, priority);
+   
+            }
+            tailIndex = tailIndex - 1;
+        }
+
+    public UnsortedArrayPriorityQueue(Object[] storage1, int capacity) {
+        this.storage1 = storage1;
+        this.capacity = capacity;
     }
+
+    
+    
+
+
+
+  
+    
 
  @Override
     public String toString() {
@@ -84,8 +108,6 @@ for (int i = 0; i <= tailIndex; i++) {
         result = result + "]";
         return result;
     }
-}
-           
-           
+
    
-  
+}
