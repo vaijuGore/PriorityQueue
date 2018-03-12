@@ -29,6 +29,7 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
      */
     private int tailIndex;
     private int priority;
+    private int i;
 
     /**
      * Create a new empty queue of the given size.
@@ -43,13 +44,23 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
 
     @Override
     public T head() throws QueueUnderflowException {
-        if (isEmpty()) {
+      if (isEmpty()) {
             throw new QueueUnderflowException();
         } else {
-            return ((PriorityItem<T>) storage1[0]).getItem();
-        }
-    }
-
+             int i = tailIndex;
+            while (i > 0 && ((PriorityItem<T>) storage1[i - 1]).getPriority() < priority) {
+                storage1[i] = storage1[i - 1];
+                i = i - 1;
+            
+            //storage1[i] = new PriorityItem<>(item, priority);
+   
+            
+            tailIndex = tailIndex - 1;
+        
+            
+            }
+    }return ((PriorityItem<T>) storage1[0]).getItem();
+    } 
     @Override
     public void add(T item, int priority) throws QueueOverflowException {
         tailIndex = tailIndex + 1;
