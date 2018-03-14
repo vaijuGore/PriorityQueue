@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package queuemanager;
 
 /**
@@ -52,14 +47,14 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                 storage1[i] = storage1[i - 1];
                 i = i - 1;
             
-            //storage1[i] = new PriorityItem<>(item, priority);
+          //  storage1[i] = new PriorityItem<>(item, priority);
    
             
             tailIndex = tailIndex - 1;
         
             
             }
-    }return ((PriorityItem<T>) storage1[0]).getItem();
+    }return ((PriorityItem<T>) storage1[i]).getItem();
     } 
     @Override
     public void add(T item, int priority) throws QueueOverflowException {
@@ -122,3 +117,4 @@ for (int i = 0; i <= tailIndex; i++) {
 
    
 }
+
