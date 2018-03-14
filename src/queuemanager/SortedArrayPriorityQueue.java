@@ -16,7 +16,7 @@ package queuemanager;
  * 
  * @param <T> The type of things being stored.
  */
-public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
+public  class SortedArrayPriorityQueue<T> implements PriorityQueue<T>  {
     
     /**
      * Where the data is actually stored.
@@ -40,20 +40,23 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
      *
      * @param size
      */
+     //tail-=head; 
     public SortedArrayPriorityQueue(int size) {
         storage = new Object[size];
         capacity = size;
         tailIndex = -1;
     }
 
-    @Override
-    public T head() throws QueueUnderflowException {
+    
+     @Override
+   public T head() throws QueueUnderflowException {
         if (isEmpty()) {
             throw new QueueUnderflowException();
         } else {
             return ((PriorityItem<T>) storage[0]).getItem();
         }
     }
+    
 
     @Override
     public void add(T item, int priority) throws QueueOverflowException {
@@ -70,6 +73,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                 i = i - 1;
             }
             storage[i] = new PriorityItem<>(item, priority);
+           System.out.println("storage"+storage[0]);
         }
     }
 
@@ -77,7 +81,10 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
     public void remove() throws QueueUnderflowException {
         if (isEmpty()) {
             throw new QueueUnderflowException();
-        } else {
+        } 
+        
+        
+        else {
             for (int i = 0; i < tailIndex; i++) {
                 storage[i] = storage[i + 1];
             }
@@ -103,3 +110,5 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         return result;
     }
 }
+
+    

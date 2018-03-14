@@ -19,7 +19,7 @@ public interface PriorityQueue<T> {
     /**
      * Add the given item to the queue with the given priority. Throw an
      * exception if it's already full to capacity.
-     *
+     *I think this is interface
      * @param item
      * @param priority
      * @throws QueueOverflowException

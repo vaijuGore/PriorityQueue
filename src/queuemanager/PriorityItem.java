@@ -13,6 +13,7 @@ public class PriorityItem<T> {
     public PriorityItem(T item, int priority) {
         this.item = item;
         this.priority = priority;
+       ;
     }
 
     public T getItem() {
@@ -26,5 +27,7 @@ public class PriorityItem<T> {
     @Override
     public String toString() {
         return "(" + getItem() + ", " + getPriority() + ")";
+        
     }
+    
 }
