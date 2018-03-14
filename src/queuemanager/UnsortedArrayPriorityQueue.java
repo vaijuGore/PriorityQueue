@@ -48,8 +48,6 @@ public class UnsortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         if (isEmpty()) {
             throw new QueueUnderflowException();
         }
-// highestPriority is set to minimum integer value, because priority can be set to negative values
-        
        int head= 0;
         int headIndex = 0;
 
