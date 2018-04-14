@@ -1,0 +1,134 @@
+package queuemanager;
+
+import static java.awt.geom.Path2D.contains;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author 11012344
+ */
+public class UnsortedLinkedPriorityQueueTest extends PriorityQueueTest {
+
+    public UnsortedLinkedPriorityQueueTest() {
+    }
+
+    @Before
+    @Override
+    public void setUp() {
+        // to initialise the instance
+        q = new UnsortedLinkedPriorityQueue <>();
+    }
+
+    /**
+     * Test of head method, of class UnSortedLinkedPriorityQueue.
+     */
+    @Test
+    public void testHead() throws Exception {
+        Person person = new Person("sam");
+        q.add(person, 1);
+        String expResult = "sam";
+        String result = q.head().getName();
+        assertEquals(expResult, result);
+    }//end of head
+
+//    /**
+//     * Test of add method, of class UnSortedLinkedPriorityQueue.
+//     */
+    @Test
+    public void testAdd() throws Exception {
+        System.out.println("add");
+        // does not work unless initiate object 
+        Person person = new Person("sam");
+        q.add(person, 1);
+        String expResult = "LinkedList: size = , contents = [(sam, 1)";
+        String result = q.toString();
+        assertEquals(expResult, result);
+    }//end of add
+
+    /**
+     * Test of add method with 4items of class UnSortedLinkedPriorityQueue. It will
+     * add because the list has no size.
+     */
+    @Test
+    public void testAdd4() throws Exception {
+        System.out.println("add");
+        // does not work unless initiate object 
+        Person person = new Person("sam");
+        q.add(person, 3);
+        Person person1 = new Person("sunny");
+        q.add(person1, 2);
+        Person person2 = new Person("sonia");
+        q.add(person, 5);
+        Person person3 = new Person("sara");
+        q.add(person3, 4);
+        String result = q.toString();
+        System.out.println("add4" + result);
+        String expResult = "LinkedList: size = , contents = [(sara, 4), (sonia, 5), (sunny, 2), (sam, 3)";
+
+       
+    } //end of exceeding size 
+
+    /**
+     * Test of add 3 items to method and see if they are sorted according to
+     * priority in class UnSortedLinkedPriorityQueue.
+     */
+    @Test
+    public void testAdd3() throws Exception {
+        System.out.println("add");
+        // does not work unless initiate object 
+        Person person = new Person("sam");
+        q.add(person, 3);
+        Person person1 = new Person("sunny");
+        q.add(person1, 2);
+        Person person2 = new Person("sonia");
+        q.add(person, 5);
+        String result = q.toString();
+        System.out.println("Sorted in priority order" + result);
+        String expResult = "LinkedList: size = , contents = [(sonia, 5), (sunny, 2), (sam, 3)";
+    } //end of add 3
+
+    /**
+     * Test of isEmpty method, of class UnSortedLinkedPriorityQueue.
+     */
+    @Test
+    public void testIsEmpty() {
+        System.out.println("isEmpty");
+
+        boolean expResult = true;
+        boolean result = q.isEmpty();
+        assertEquals(expResult, result);
+
+    }//end of test is empty
+
+//
+//    /**
+//     * Test of toString method, of class UnSortedLinkedPriorityQueue.
+//     */
+    @Test
+    public void testToString() {
+        String expResult = "LinkedList: size = , contents = [";
+        String result = q.toString();
+        assertEquals(expResult, result);
+    }//end of toString
+
+    /**
+     * Test of remove method after adding items , of class
+     * UnSortedLinkedPriorityQueue.
+     */
+    @Test
+    public void testRemove() throws Exception {
+        System.out.println("remove");
+//        PriorityQueue instance = new PriorityQueueImpl();
+        Person person = new Person("sam");
+        q.add(person, 1);
+        q.remove();
+
+    }//end of remove
+
+}//end of test
+
